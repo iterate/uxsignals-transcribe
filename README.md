@@ -247,7 +247,7 @@ To upload a file called audunspodssounds.mp3 in norwegian from your download dir
 With email callback:
 
 ```sh
-curl --location --request POST 'localhost:3000/v1/transcribe?output=vtt&email_callback=test@localhost&language=norwegian&model=large' \
+curl --location --request POST 'localhost:9000/v1/transcribe?output=vtt&email_callback=test@localhost&language=norwegian&model=large' \
   --header 'Content-Type: audio/mpeg' \
   --data-binary '@/Users/<user>/Downloads/audunspodssounds.mp3'
 ```
@@ -255,7 +255,7 @@ curl --location --request POST 'localhost:3000/v1/transcribe?output=vtt&email_ca
 With webhook callback:
 
 ```sh
-curl --location --request POST 'localhost:3000/v1/transcribe?output=vtt&language=norwegian&model=large&webhook_callback_url=https://myniceserver.something/mywebhookid' \
+curl --location --request POST 'localhost:9000/v1/transcribe?output=vtt&language=norwegian&model=large&webhook_callback_url=https://myniceserver.something/mywebhookid' \
   --header 'Content-Type: audio/mpeg' \
   --data-binary '@/Users/<user>/Downloads/audunspodssounds.mp3'
 ```

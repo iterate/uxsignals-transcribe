@@ -6,7 +6,7 @@ services:
             # use Dockerfile.gpu when using a NVIDIA GPU
             dockerfile: Dockerfile
         ports:
-            - "3000:3000"
+            - "9000:9000"
         volumes:
             - .:/workspace
         depends_on:
@@ -18,7 +18,7 @@ services:
             - EMAIL_SENDER_HOST
             - DISCLAIMER
             - ALLOWED_WEBHOOKS_FILE
-        command: gunicorn -w 2 -b 0.0.0.0:3000 --log-file=- 'src.main:app'
+        command: gunicorn -w 2 -b 0.0.0.0:9000 --log-file=- 'src.main:app'
     worker:
         build:
             context: .
