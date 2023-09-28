@@ -1,0 +1,16 @@
+port = 9000
+
+[env.prod]
+WHISPER_WEBHOOKS = { encrypted = "skidOYzprxjOUlrBzXm_qArDIRo0Cuasj8wxe33TSlqrNTCs86FVCnVRsuf43CmXjbXKc-jc6_MDP6ur4MjDLVKAG5NGCzGx_q7nu4jJUdwsagMGzcOdqWZzHLOB296Yo6Bd2vYF_PCzH3f072iJvAMOTswB-9nuRC2Gre6UkoOVWGz9M8HNwgN5FjdT8h9EIR4jnZtVJVPTndAcW4AM9osLmos8nVys4UfNIPejoQK-x68sWavZaVAMFd_w0WCXU6znb-T8H9feQhm4sU3ovRH2vxVwEYxln7ssrYsAUo39mPJmfNCbM8hJ3JT27AwCFA4addYXBLpEphCZWj4vrlZ5qFB76Hu_qXUsB4cuAkl1FhAqnlswWVBY9DAhrhIaPxGYNH8JrTkFu-dxnBhEJKgIaLK48jsawdFuOWRa0I-m8SzN2Hd2W8ge1jlNajl5aAJl2evZcwpHAlBAjeE28VOsetLB3jDZ3-yx1tg2iVenca1ht1hs6GLX-vi_co7VvYyJk1_C4txK5F6Dx_l05iXHJOkGI8KQrRPr3KiL9mLaezVxePMg" }
+BASE_URL="http://api.uxsignals-transcribe.svc.cluster.internal"
+
+[ingress]
+disable=true
+
+[experimental]
+# Allocates a lot of resources, adds incoming/outgoing network rules
+whisper-runner = "true"
+# Disables outgoing traffic
+isolate-appling = "namespace"
+# Adds the stateful uxsignals-redis config to the container
+uxsignals-redis-url = "true"

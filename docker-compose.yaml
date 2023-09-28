@@ -23,7 +23,7 @@ services:
         build:
             context: .
             # use Dockerfile.gpu when using a NVIDIA GPU
-            dockerfile: Dockerfile
+            dockerfile: worker/Dockerfile
         volumes:
             - .:/workspace
         depends_on:
