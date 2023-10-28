@@ -26,7 +26,6 @@ class WebhookService:
 
     def create_payload_hash(self, payload, token):
         x_payload_signature = hashlib.sha256(token.encode('utf-8'))
-        x_payload_signature.update(json.dumps(payload).encode('utf-8'))
         return x_payload_signature.hexdigest()
     
     def create_webhook_payload(self, job_id, filename, url, success):

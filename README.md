@@ -21,17 +21,17 @@ The response will be a JSON object with `job_id` that can be used to check the s
 
 Query parameters:
 
-- REQUIRED: `email_callback`: string or `webhook_id`: string
-- OPTIONAL: `language`: string (default: automatic detection)
-- OPTIONAL: `model`: string (default: `tiny`)
-- OPTIONAL: `task`: string (default: `transcribe`)
-  - `transcribe`: Transcribe audio to text
-  - `translate`: Transcribe then translate audio to text
-- OPTIONAL: `filename`: string (default: `untitled-transcription`)
+-   REQUIRED: `email_callback`: string or `webhook_id`: string
+-   OPTIONAL: `language`: string (default: automatic detection)
+-   OPTIONAL: `model`: string (default: `tiny`)
+-   OPTIONAL: `task`: string (default: `transcribe`)
+    -   `transcribe`: Transcribe audio to text
+    -   `translate`: Transcribe then translate audio to text
+-   OPTIONAL: `filename`: string (default: `untitled-transcription`)
 
 Body:
 
-- REQUIRED: `binary data`: Raw data with the audio content to transcribe
+-   REQUIRED: `binary data`: Raw data with the audio content to transcribe
 
 ### OPTIONS `/v1/transcribe`
 
@@ -43,11 +43,11 @@ Detect the language of the audio file.
 
 Query parameters:
 
-- OPTIONAL: `model`: string (default: `tiny`)
+-   OPTIONAL: `model`: string (default: `tiny`)
 
 Body:
 
-- REQUIRED: `binary data`: Raw data with the audio content to detect the language for
+-   REQUIRED: `binary data`: Raw data with the audio content to detect the language for
 
 ### OPTIONS `/v1/detect`
 
@@ -59,12 +59,12 @@ Receive the finished job result as the requested output format.
 
 Query parameters:
 
-- OPTIONAL: `output`: string (default: `srt`)
-  - `json`: JSON response of the model output
-  - `timecode_txt`: Plain text file with timecodes(srt)
-  - `txt`: Plain text file of the detected text
-  - `vtt`: WebVTT file with the detected text
-  - `srt`: WebVTT file with the detected text
+-   OPTIONAL: `output`: string (default: `srt`)
+    -   `json`: JSON response of the model output
+    -   `timecode_txt`: Plain text file with timecodes(srt)
+    -   `txt`: Plain text file of the detected text
+    -   `vtt`: WebVTT file with the detected text
+    -   `srt`: WebVTT file with the detected text
 
 ### OPTIONS `/v1/download/<job_id>`
 
@@ -167,9 +167,9 @@ docker-compose --env-file .envrc up
 
 This will start three docker containers.
 
-- redis
-- api running flask fra src
-- worker running rq from src
+-   redis
+-   api running flask fra src
+-   worker running rq from src
 
 ### Using NVIDIA CUDA with docker-compose
 
@@ -180,20 +180,20 @@ To enable CUDA support, you need to edit the `docker-compose.yml` file to use th
 
 ```yaml
 build:
-  context: .
-  # use Dockerfile.gpu when using a NVIDIA GPU
-  dockerfile: Dockerfile.gpu
+    context: .
+    # use Dockerfile.gpu when using a NVIDIA GPU
+    dockerfile: Dockerfile.gpu
 ```
 
 You also have to uncomment the device reservation in the `docker-compose.yml` file:
 
 ```yaml
 deploy:
-  resources:
-    reservations:
-      devices:
-        - driver: nvidia
-          capabilities: [gpu]
+    resources:
+        reservations:
+            devices:
+                - driver: nvidia
+                  capabilities: [gpu]
 ```
 
 Then run the following command as usual:
@@ -249,3 +249,7 @@ $ /Applications/Python\ 3.7/Install\ Certificates.command
 Make sure you have fired up the Redis using docker-compose and then use:
 
 `ENVIRONMENT=test BASE_URL=http://localhost REDIS_URL=redis://localhost:6379 pytest -v `
+
+### Debugging
+
+If you want to print out logs, try using `print(flush=True)` to make sure gets displayed and now shallowed
