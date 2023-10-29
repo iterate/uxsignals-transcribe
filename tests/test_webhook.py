@@ -22,8 +22,10 @@ def match_failure_payload(request):
     return data['success'] == False and 'X-WAAS-Signature' in request.headers
 
 def match_webhook_header_signature(request):
+    data = request.json()
     header_signature = request.headers['X-WAAS-Signature']
     payload_signature = hashlib.sha256("frKPI6p5LxxpJa8tCvVr=u5NvU66EJCQdybPuEmzKNeyCDul2-zrOx05?LwIhL5N".encode('utf-8'))
+    payload_signature.update(data.job_id)
     payload_signature = payload_signature.hexdigest()
     if payload_signature != header_signature:
         raise Exception("Signature mismatch")

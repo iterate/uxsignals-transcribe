@@ -26,6 +26,7 @@ class WebhookService:
 
     def create_payload_hash(self, payload, token):
         x_payload_signature = hashlib.sha256(token.encode('utf-8'))
+        x_payload_signature.update(payload['job_id'].encode('utf-8'))
         return x_payload_signature.hexdigest()
     
     def create_webhook_payload(self, job_id, filename, url, success):
@@ -42,7 +43,6 @@ class WebhookService:
     def post_to_webhook(self, webhook_id, job_id, filename, url, success=False):
         webhook = self.get_webhook_by_id(webhook_id) # This will return none if the webhook id is not found/not valid
         if webhook:
-
             payload = self.create_webhook_payload(job_id, filename, url, success)
             payload_hash = self.create_payload_hash(payload, webhook['token'])
             webhook_url = webhook['url']
