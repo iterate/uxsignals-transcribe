@@ -17,6 +17,7 @@ ENV ALLOWED_WEBHOOKS_FILE "allowed_webhooks.json"
 COPY api/entrypoint.sh /docker-entrypoint.sh
 
 COPY src src
+COPY worker-settings.py download_models.py gunicorn.conf.py /workspace/
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD [ "gunicorn", "-w", "2", "-b", "0.0.0.0:9000", "--log-file=/dev/stdout", "src.main:app"]

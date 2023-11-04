@@ -9,6 +9,7 @@ RUN pip3 install -r requirements.txt
 COPY worker/entrypoint.sh /docker-entrypoint.sh
 COPY worker/runner.sh /docker-runner.sh
 COPY src src
+COPY worker-settings.py download_models.py gunicorn.conf.py /workspace/
 
 ENV WHISPER_WEBHOOKS "[]"
 ENV ALLOWED_WEBHOOKS_FILE "allowed_webhooks.json"
