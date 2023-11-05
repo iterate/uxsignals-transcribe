@@ -11,4 +11,7 @@ disable=true
 
 [experimental]
 uxsignals-redis-url = "true"
+# Allows outgoing traffic to other applings
 isolate-appling = "namespace"
+# Allow traffic to and from the specified apps
+isolate-allow-apps = "100"

@@ -8,9 +8,11 @@ BASE_URL="http://api.uxsignals-transcribe.svc.cluster.internal"
 disable=true
 
 [experimental]
-# Allocates a lot of resources, adds incoming/outgoing network rules
+# Allocates a lot of resources
 whisper-runner = "true"
-# Disables outgoing traffic
+# Allows outgoing traffic to other applings
 isolate-appling = "namespace"
+# Allow traffic to and from the specified apps
+isolate-allow-apps = "100"
 # Adds the stateful uxsignals-redis config to the container
 uxsignals-redis-url = "true"
