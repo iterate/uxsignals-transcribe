@@ -4,11 +4,14 @@ FROM python:3.10-buster
 RUN set -e; \
     mkdir -p /var/run/secrets/waas.uxsignals.hops.run; \
     echo "[]" > /var/run/secrets/waas.uxsignals.hops.run/allowed-webhooks.json
-# ENV ALLOWED_WEBHOOKS_FILE /var/run/secrets/waas.uxsignals.hops.run/allowed-webhooks.json
 
 WORKDIR /workspace
-RUN apt-get update
-RUN apt-get install -y git ffmpeg
+RUN set -eu; \
+    apt-get update --yes; \
+    apt-get install --yes \
+      ffmpeg \
+      git \
+    ;
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 

@@ -11,6 +11,8 @@ disable=true
 
 [experimental]
 uxsignals-redis-url = "true"
+# Expose a shared directory for the whisper service
+whisper-shared-files = "/workspace/upload-shared-tmp"
 # Allows outgoing traffic to other applings
 isolate-appling = "namespace"
 # Allow traffic to and from the specified apps
